@@ -1,6 +1,7 @@
 body{
     background-color: aliceblue;
 }
+
 .cardtype1{
     margin: 5% 20% 5% 20%;
     padding: 5% 10% 10% 10%;
@@ -8,13 +9,17 @@ body{
     box-shadow: 3px 3px 8px rgba(0,0,0,0.50);
     background-color: white;
 }
+
 .cardtype1:hover{
     box-shadow: 10px 10px 24px rgba(0,0,0,0.50);
 }
+
 .mid{
     text-align: center;
 }
-a{
+
+a:link, a:visited{
+    color: #0000EE;
     font-size: 24px;
     line-height: 30px;
 }

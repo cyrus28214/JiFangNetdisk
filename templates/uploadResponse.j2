@@ -1,0 +1,6 @@
+{% extends 'layout.j2' %}
+
+{% block script %}
+    alert('{{message}}');
+    location.replace('{{redirect_url}}');
+{% endblock %}

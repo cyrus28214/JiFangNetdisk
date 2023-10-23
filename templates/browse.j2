@@ -1,0 +1,42 @@
+{% extends "layout.j2" %}
+
+{% block content %}
+    <div class="cardtype1">
+        <h1 class='mid'> 机房网盘 </h1>
+        <form action = "" method="post" enctype="multipart/form-data">
+            <p><input id="input-files" type="file" name="uploaded_files" multiple = "multiple" /></p>
+            <p><input id="submit" type="submit" value="上传"/></p>
+        </form>
+
+        {% if path != '' %}
+            <a href = "../">返回</a>
+        {% endif %}
+        {% set local_path = directory_path + path %}
+        {% for item in os.listdir(local_path) %}
+            {% if os.path.isdir(os.path.join(local_path, item)) %}
+                <p><a href = "./{{item}}/"> {{item + '/'}} </a></p>
+            {% endif %}
+        {% endfor %}
+
+        {% for item in os.listdir(local_path) %}
+            {% if os.path.isfile(os.path.join(local_path, item)) %}
+                <p><a href = "{{ '/' + directory_path + path + '/' + item + '/' }}"> {{item}} </a></p>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endblock %}
+
+{% block script %}
+    document.addEventListener('DOMContentLoaded', () => {
+        let inputFiles = document.getElementById('input-files');
+        let submit = document.getElementById('submit');
+        submit.addEventListener('click', (e) => {
+            if (!inputFiles.value) {
+                alert('没有选择任何文件');
+                e.preventDefault();
+                return false;
+            }
+            return true;
+        });
+    })
+{% endblock %}
